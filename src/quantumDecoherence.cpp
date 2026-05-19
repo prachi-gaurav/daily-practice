@@ -1,4 +1,5 @@
-/* Problem Statement: Quantum Stream Decoherence
+/* DATE: 19th May 2026
+Problem Statement: Quantum Stream Decoherence
 You are monitoring a stream of N quantum sensor readings, represented as an array of integers readings. Due to decoherence, some readings drop below zero, indicating corrupted data. 
 Your analytics engine needs to evaluate sub-segments of exactly K consecutive readings.
 A window of size $K$ is considered Valid if and only if it satisfies both conditions:
