@@ -1,0 +1,56 @@
+/ Problem Statement: Quantum Stream Decoherence
+/You are monitoring a stream of N quantum sensor readings, represented as an array of integers readings. Due to decoherence, some readings drop below zero, indicating corrupted data. 
+/Your analytics engine needs to evaluate sub-segments of exactly K consecutive readings.
+/A window of size $K$ is considered Valid if and only if it satisfies both conditions:
+/1. It contains exactly 1 or 2 corrupted readings (values strictly less than 0).
+/2. The net energy (the sum of all elements in that window) is strictly positive (greater than 0).
+/Write a function that returns the maximum net energy among all valid windows of size $K$. If no valid window exists in the entire stream, return -1.
+/Constraints:
+/1. 1<=K<=N<=10^5
+/2. -10^4<=readings[i]<=10^4
+
+
+int maxValidWindowEnergy(const std::vector<int>& readings, int k){
+    int n=readings.size();
+    if (n<k) 
+      return -1; 
+    long long curr_sum=0;
+    int pass=0;
+    for (int i=0;i<k;i++)
+    {
+        if(readings[i]<0)
+            pass++;
+        curr_sum+=reaings[i];
+    }
+    long long max_sum=-1;
+    if (pass==1||pass==2)
+    {
+        if(curr_sum>0)
+        {
+            max_sum=curr_sum;
+        }
+    }
+    for (int i=k;i<n;i++) 
+    {
+        int inc=readings[i];
+        int out=readings[i-k];
+        if(inc<0)
+        {
+            pass++;
+        }
+        if(out<0)
+        {
+            pass--;
+        }
+        curr_sum-=out;
+        curr_sum+=inc;
+        if(pass==1||pass==2)
+        {
+            if(curr_sumc>0)
+            {
+                max_sum=std::max(max_metric,current_metric);
+            }
+        }
+    }
+    return max_metric;
+}
